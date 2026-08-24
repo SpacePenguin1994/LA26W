@@ -1,0 +1,320 @@
+{"0": {
+    "doc": "课程通知",
+    "title": "课程通知",
+    "content": " ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"1": {
+    "doc": "课程通知",
+    "title": "第12周课程通知",
+    "content": "May 19 &middot; 0 min read 各位同学好！ . | 第十一次的作业已经发布，请大家及时在课程安排中查看。 . | 第十次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"2": {
+    "doc": "课程通知",
+    "title": "第11周课程通知",
+    "content": "May 12 &middot; 0 min read 各位同学好！ . | 第十次的作业已经发布，请大家及时在课程安排中查看。 . | 第九次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"3": {
+    "doc": "课程通知",
+    "title": "第9周课程通知",
+    "content": "Apr 28 &middot; 0 min read 各位同学好！ . | 第九次的作业已经发布，请大家及时在课程安排中查看。 . | 第八次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . 提前祝大家劳动节快乐！ . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"4": {
+    "doc": "课程通知",
+    "title": "第8周课程通知",
+    "content": "Apr 21 &middot; 0 min read 各位同学好！ . | 第八次的作业已经发布，请大家及时在课程安排中查看。 . | 第七次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"5": {
+    "doc": "课程通知",
+    "title": "第7周课程通知",
+    "content": "Apr 15 &middot; 0 min read 各位同学好！ . 已经发布的针对2班的第七次作业的第5题应为： . | 证明线性方程组$A\\bm x =\\bm b$ 有解当且仅当方程 $\\begin{bmatrix}A^{\\mathrm{T}}\\\\bm b ^{\\mathrm{T}}\\end{bmatrix}\\bm y =\\begin{bmatrix}\\bm 0\\ \\bm 1\\end{bmatrix}$ 无解。 | . 原来的版本表述有误，现已更正，感谢同学的指出。 . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"6": {
+    "doc": "课程通知",
+    "title": "第7周课程通知",
+    "content": "Apr 14 &middot; 0 min read 各位同学好！ . | 第七次的作业已经发布，请大家及时在课程安排中查看。 . | 第六次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"7": {
+    "doc": "课程通知",
+    "title": "第6周课程通知",
+    "content": "Apr 7 &middot; 0 min read 各位同学好！ . | 第六次的作业已经发布，请大家及时在课程安排中查看。 . | 第五次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"8": {
+    "doc": "课程通知",
+    "title": "第5周课程通知",
+    "content": "Mar 31 &middot; 0 min read 各位同学好！ . | 第五次的作业已经发布，请大家及时在课程安排中查看。 . | 第四次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"9": {
+    "doc": "课程通知",
+    "title": "第4周课程通知",
+    "content": "Mar 24 &middot; 0 min read 各位同学好！ . | 第四次的作业已经发布，请大家及时在课程安排中查看。 . | 第三次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"10": {
+    "doc": "课程通知",
+    "title": "第3周课程通知",
+    "content": "Mar 17 &middot; 0 min read 各位同学好！ . | 第三次的作业已经发布，请大家及时在课程安排中查看。 . | 第二次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"11": {
+    "doc": "课程通知",
+    "title": "第3周课程通知",
+    "content": "Mar 16 &middot; 0 min read 各位同学好！ . 已经发布的针对1班的第二次作业的第5题应为： . | 若$A$是可逆矩阵，证明交换$A$的两行得到的矩阵$B$也是可逆矩阵，并且$B^{-1}$可以通过交换$A^{-1}$的两列得到。 | . 原来的叙述“$B^{-1}$可以通过交换$A^{-1}$的两行得到” 是不对的，现已更正，感谢同学的指出。 . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"12": {
+    "doc": "课程通知",
+    "title": "第2周课程通知",
+    "content": "Mar 12 &middot; 0 min read 各位同学好！ . 已经发布的针对2班的第二次作业的第5题应为： . | 假设矩阵$A$可逆，利用$A(I+BA)=(I+AB)A$证明$I+BA$是可逆的当且仅当$I+AB$是可逆的。 | . 原来的版本表述有误，现已更正。 . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"13": {
+    "doc": "课程通知",
+    "title": "第2周课程通知",
+    "content": "Mar 10 &middot; 0 min read 各位同学好！ . | 第二次的作业已经发布，请大家及时在课程安排中查看。 . | 第一次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"14": {
+    "doc": "课程通知",
+    "title": "第1周课程通知",
+    "content": "Mar 3 &middot; 0 min read 第一次的作业已经发布，请大家及时在课程安排中查看。 . | 由于两个班级每周的课时并不相同，所以每周的作业会有所区别，请大家务必选择自己所在班级的作业版本完成。 . | 每个作业都发布了两个版本，一个是不留空的版本，一个是留空的版本，题目内容并无区别，请大家选择自己喜欢的版本完成。 . | . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"15": {
+    "doc": "课程通知",
+    "title": "第0周课程通知",
+    "content": "Feb 24 &middot; 0 min read 欢迎来到《线性代数》课程！ . ",
+    "url": "http://localhost:4000/announcements/",
+    "relUrl": "/announcements/"
+  },"16": {
+    "doc": "课程资料勘误",
+    "title": "课程资料勘误",
+    "content": "本页面记录课程讲义及相关资料中的勘误，欢迎同学们反馈。 . | Lecture行列式讲义第2页笔误 2026-03-09 第2页三阶行列式的计算中，$\\det(A)$的第五项$-a_{12}a_{23}a_{31}$应为$-a_{12}a_{21}a_{33}$，即公式应为: . \\[\\det(A) = a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} - a_{11}a_{23}a_{32} - a_{12}a_{21}a_{33} - a_{13}a_{22}a_{31}\\] 感谢徐彤佳的指正。 . | Lecture讲义2第5页笔误 2026-03-10 第5页中第一个等式，消去矩阵乘以(8)的左侧系数矩阵，得到(10)的左侧系数矩阵应为： . \\[\\begin{bmatrix} 1 &amp; 0 &amp; 0 \\\\ -2 &amp; 1 &amp; 0 \\\\ 0 &amp; 0 &amp; 1 \\end{bmatrix}\\begin{bmatrix} 2 &amp; 4 &amp; -2 \\\\ 4 &amp; 9 &amp; -3 \\\\ -2 &amp; -3 &amp; 7\\end{bmatrix} \\begin{bmatrix}2 &amp; 4 &amp; -2 \\\\ 0 &amp; 1 &amp; 1 \\\\ -2 &amp; -3 &amp; 7 \\end{bmatrix}.\\] | Lecture讲义3第4页笔误（3月23日再更新） 2026-03-23 第4页二阶矩阵的计算中，其逆矩阵必须满足应为： . \\[A^{-1}A=I \\quad \\Longrightarrow \\quad \\begin{array}{rcc}ax+cy &amp; = &amp; 1 \\\\bx+dy &amp; = &amp; 0 \\\\az+cw &amp; = &amp; 1 \\\\ bz+dw &amp; = &amp; 0 \\\\ \\end{array}\\] 第4页二阶矩阵的逆矩阵里，$x,y,z,w$ 的解缺少了一个系数，即： . \\[x=\\frac{1}{ad-bc}\\cdot d,\\ y=\\frac{1}{ad-bc}\\cdot (-b),\\ z=\\frac{1}{ad-bc}\\cdot (-c),\\ w=\\frac{1}{ad-bc}\\cdot a\\] 感谢徐彤佳的指正。 . | PPT课件2第20页笔误 2026-03-16 第20页消元法解方程的矩阵形式中，应为： . \\[\\begin{bmatrix} 2 &amp; 4 &amp; -2\\\\ 4 &amp; 9 &amp; -3\\\\ 2 &amp; -2 &amp; 4 \\end{bmatrix}\\begin{bmatrix} x\\\\y\\\\z \\end{bmatrix}=\\begin{bmatrix} 2\\\\8\\\\10 \\end{bmatrix} \\qquad\\Longrightarrow\\qquad \\begin{bmatrix} 2 &amp; 4 &amp; -2\\\\ 0 &amp; 1 &amp; 1\\\\ 0 &amp; 0 &amp; 4 \\end{bmatrix}\\begin{bmatrix} x\\\\y\\\\z \\end{bmatrix}=\\begin{bmatrix} 2\\\\4\\\\8 \\end{bmatrix}\\] 感谢冯驰元的指正。 . | Lecture 7讲义第9页笔误 2026-04-20 第9页证明行交换不改变列秩的时候，比较应该是 $A$ 和 $A’$的第$k$个向量 $\\mathbf{a}_k$和$\\mathbf{a}’_k$： . \\[\\begin{aligned} \\mathbf{a}_k&amp;=\\begin{bmatrix} a_{1k}&amp;\\ldots &amp;{\\color{red}a_{ik}}&amp;\\ldots &amp;{\\color{red}a_{jk}}&amp;\\ldots &amp;a_{nk} \\end{bmatrix}^T\\\\ \\mathbf{a}'_k&amp;=\\begin{bmatrix} a_{1k}&amp;\\ldots &amp;{\\color{red}a_{jk}}&amp;\\ldots &amp;{\\color{red}a_{ik}}&amp;\\ldots &amp;a_{nk} \\end{bmatrix}^T \\end{aligned}\\] 原来的版本下标有误，现已更正。 . 感谢鲁正仪的指正。 . | Lecture 8讲义第5页证明错误 2026-04-20 第5页关于引理 1.9 的 4: $(V^{\\bot})^{\\bot}=V$ 证明有误，新版本已经更正。 . | Lecture 9 讲义第1页笔误 2026-05-07 第1页倒数第六行，第二个方程应该为： . \\[\\begin{bmatrix} 1 &amp; 1 &amp; 1\\\\1 &amp; 1 &amp; 1\\\\ 4 &amp; 2 &amp; 1\\\\ 4 &amp; 2 &amp; 1\\end{bmatrix}\\begin{bmatrix}a\\\\b\\\\c\\end{bmatrix}=\\begin{bmatrix} 2\\\\3\\\\4\\\\5 \\end{bmatrix}\\] 感谢鲁芷仪的指正。 . | Lecture 10 讲义第18页、第20页笔误 2026-05-19 讲义第18页第7行，“从而由行列式的线性性，我们有”下面的公式中 . \\[{\\color{red}e_1} \\text{应为} {\\color{red}e_i}.\\] 讲义第20页例2.20 中 置换 $\\sigma_0$的第四个逆序对应该是 $(2,3)$，不是 $(2,1)$. 讲义第20页逆序数的重要性质中，第三个例子应为： . \\[\\tau(3241)=4 \\Longrightarrow 3241\\rightarrow 3214\\rightarrow 2314\\rightarrow 2134\\rightarrow 1234\\] 感谢徐彤佳的指正。 . | . ",
+    "url": "http://localhost:4000/corrections/",
+    "relUrl": "/corrections/"
+  },"17": {
+    "doc": "主页",
+    "title": "《线性代数》2026春季学期",
+    "content": "上海师范大学《线性代数》(080931107421.01 &amp; 080931107421.02) . ",
+    "url": "http://localhost:4000/#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B02026%E6%98%A5%E5%AD%A3%E5%AD%A6%E6%9C%9F",
+    "relUrl": "/#线性代数2026春季学期"
+  },"18": {
+    "doc": "主页",
+    "title": "第12周课程通知",
+    "content": "May 19 &middot; 0 min read 各位同学好！ . | 第十一次的作业已经发布，请大家及时在课程安排中查看。 . | 第十次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . [Announcements](/announcements/){: .btn .btn-outline .fs-3 } --> ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"19": {
+    "doc": "主页",
+    "title": "关于本课程",
+    "content": "线性代数是学习自然科学的一门重要基础数学课程，其研究的对象是线性空间（又称向量空间）和线性空间之间的线性映射（又称线性变换）。更具体的来说，我们研究如下的线性方程： . | $a_1x_1 + a_2x_2 + \\cdots + a_nx_n = b$, | . 和如下的线性变换： . | $(x_1,\\ldots,x_n)\\rightarrow a_1x_1 + a_2x_2 + \\cdots + a_nx_n$ | . 实际上，其几乎是所有数学领域的基础。 在这门课中，我们将从解方程组$A\\mathbf{x}=\\mathbf{b}$出发，引入并介绍关于矩阵$A$的四个重要子空间，进一步展现线性代数的基本定理。 . 关于课程介绍和课程要求的更多信息请关注课程信息。 . ",
+    "url": "http://localhost:4000/#%E5%85%B3%E4%BA%8E%E6%9C%AC%E8%AF%BE%E7%A8%8B",
+    "relUrl": "/#关于本课程"
+  },"20": {
+    "doc": "主页",
+    "title": "课程基本信息",
+    "content": "主讲人: 杨启哲, qzyang(at)shnu.edu.cn . 课程时间地点: . | 对于2025级计算机科学与技术师范本科1班的学生： . | 周二第8-9节，奉贤3教楼512 (1-16周) | 周五第3-4节，奉贤3教楼412 (2-16周，双周) | . | 对于2025级计算机科学与技术师范本科2班的学生： . | 周二第6-7节，奉贤3教楼512 (1-16周) | 周五第3-4节，奉贤3教楼412 (1-15周，单周) | . | . 更多信息可以关注 课程安排. ",
+    "url": "http://localhost:4000/#%E8%AF%BE%E7%A8%8B%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF",
+    "relUrl": "/#课程基本信息"
+  },"21": {
+    "doc": "主页",
+    "title": "期末考试",
+    "content": "期末考试的具体信息会随着学期的进展进行公布。 . ",
+    "url": "http://localhost:4000/#%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95",
+    "relUrl": "/#期末考试"
+  },"22": {
+    "doc": "主页",
+    "title": "课程反馈",
+    "content": "我们建立了一个长期的课程反馈问卷: . | 《线性代数》课程调查问卷 | . 欢迎大家提出关于本课程的问题或建议。 . ",
+    "url": "http://localhost:4000/#%E8%AF%BE%E7%A8%8B%E5%8F%8D%E9%A6%88",
+    "relUrl": "/#课程反馈"
+  },"23": {
+    "doc": "主页",
+    "title": "之前的课程资料",
+    "content": ". | 2025年春季学期 | 2024年春季学期 | . ",
+    "url": "http://localhost:4000/#%E4%B9%8B%E5%89%8D%E7%9A%84%E8%AF%BE%E7%A8%8B%E8%B5%84%E6%96%99",
+    "relUrl": "/#之前的课程资料"
+  },"24": {
+    "doc": "主页",
+    "title": "课程资料勘误",
+    "content": "课程资料中的错误已记录于课程资料勘误页面，请注意查阅。 . ",
+    "url": "http://localhost:4000/#%E8%AF%BE%E7%A8%8B%E8%B5%84%E6%96%99%E5%8B%98%E8%AF%AF",
+    "relUrl": "/#课程资料勘误"
+  },"25": {
+    "doc": "主页",
+    "title": "课程通知",
+    "content": " ",
+    "url": "http://localhost:4000/#%E8%AF%BE%E7%A8%8B%E9%80%9A%E7%9F%A5",
+    "relUrl": "/#课程通知"
+  },"26": {
+    "doc": "主页",
+    "title": "第12周课程通知",
+    "content": "May 19 &middot; 0 min read 各位同学好！ . | 第十一次的作业已经发布，请大家及时在课程安排中查看。 . | 第十次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"27": {
+    "doc": "主页",
+    "title": "第11周课程通知",
+    "content": "May 12 &middot; 0 min read 各位同学好！ . | 第十次的作业已经发布，请大家及时在课程安排中查看。 . | 第九次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"28": {
+    "doc": "主页",
+    "title": "第9周课程通知",
+    "content": "Apr 28 &middot; 0 min read 各位同学好！ . | 第九次的作业已经发布，请大家及时在课程安排中查看。 . | 第八次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . 提前祝大家劳动节快乐！ . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"29": {
+    "doc": "主页",
+    "title": "第8周课程通知",
+    "content": "Apr 21 &middot; 0 min read 各位同学好！ . | 第八次的作业已经发布，请大家及时在课程安排中查看。 . | 第七次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"30": {
+    "doc": "主页",
+    "title": "第7周课程通知",
+    "content": "Apr 15 &middot; 0 min read 各位同学好！ . 已经发布的针对2班的第七次作业的第5题应为： . | 证明线性方程组$A\\bm x =\\bm b$ 有解当且仅当方程 $\\begin{bmatrix}A^{\\mathrm{T}}\\\\bm b ^{\\mathrm{T}}\\end{bmatrix}\\bm y =\\begin{bmatrix}\\bm 0\\ \\bm 1\\end{bmatrix}$ 无解。 | . 原来的版本表述有误，现已更正，感谢同学的指出。 . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"31": {
+    "doc": "主页",
+    "title": "第7周课程通知",
+    "content": "Apr 14 &middot; 0 min read 各位同学好！ . | 第七次的作业已经发布，请大家及时在课程安排中查看。 . | 第六次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"32": {
+    "doc": "主页",
+    "title": "第6周课程通知",
+    "content": "Apr 7 &middot; 0 min read 各位同学好！ . | 第六次的作业已经发布，请大家及时在课程安排中查看。 . | 第五次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"33": {
+    "doc": "主页",
+    "title": "第5周课程通知",
+    "content": "Mar 31 &middot; 0 min read 各位同学好！ . | 第五次的作业已经发布，请大家及时在课程安排中查看。 . | 第四次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"34": {
+    "doc": "主页",
+    "title": "第4周课程通知",
+    "content": "Mar 24 &middot; 0 min read 各位同学好！ . | 第四次的作业已经发布，请大家及时在课程安排中查看。 . | 第三次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"35": {
+    "doc": "主页",
+    "title": "第3周课程通知",
+    "content": "Mar 17 &middot; 0 min read 各位同学好！ . | 第三次的作业已经发布，请大家及时在课程安排中查看。 . | 第二次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"36": {
+    "doc": "主页",
+    "title": "第3周课程通知",
+    "content": "Mar 16 &middot; 0 min read 各位同学好！ . 已经发布的针对1班的第二次作业的第5题应为： . | 若$A$是可逆矩阵，证明交换$A$的两行得到的矩阵$B$也是可逆矩阵，并且$B^{-1}$可以通过交换$A^{-1}$的两列得到。 | . 原来的叙述“$B^{-1}$可以通过交换$A^{-1}$的两行得到” 是不对的，现已更正，感谢同学的指出。 . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"37": {
+    "doc": "主页",
+    "title": "第2周课程通知",
+    "content": "Mar 12 &middot; 0 min read 各位同学好！ . 已经发布的针对2班的第二次作业的第5题应为： . | 假设矩阵$A$可逆，利用$A(I+BA)=(I+AB)A$证明$I+BA$是可逆的当且仅当$I+AB$是可逆的。 | . 原来的版本表述有误，现已更正。 . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"38": {
+    "doc": "主页",
+    "title": "第2周课程通知",
+    "content": "Mar 10 &middot; 0 min read 各位同学好！ . | 第二次的作业已经发布，请大家及时在课程安排中查看。 . | 第一次的作业答案也同样已经发布，请大家及时在课程安排中查看。 . | . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"39": {
+    "doc": "主页",
+    "title": "第1周课程通知",
+    "content": "Mar 3 &middot; 0 min read 第一次的作业已经发布，请大家及时在课程安排中查看。 . | 由于两个班级每周的课时并不相同，所以每周的作业会有所区别，请大家务必选择自己所在班级的作业版本完成。 . | 每个作业都发布了两个版本，一个是不留空的版本，一个是留空的版本，题目内容并无区别，请大家选择自己喜欢的版本完成。 . | . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"40": {
+    "doc": "主页",
+    "title": "第0周课程通知",
+    "content": "Feb 24 &middot; 0 min read 欢迎来到《线性代数》课程！ . ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"41": {
+    "doc": "主页",
+    "title": "主页",
+    "content": " ",
+    "url": "http://localhost:4000/",
+    "relUrl": "/"
+  },"42": {
+    "doc": "课程安排",
+    "title": "课程安排",
+    "content": "本页面包含了本课程的课程安排，包括课程课件、课程作业以及课程作业的解答。 . ",
+    "url": "http://localhost:4000/schedule/",
+    "relUrl": "/schedule/"
+  },"43": {
+    "doc": "课程安排",
+    "title": "课程的一些提前的材料",
+    "content": "1 一些符号说明 [讲义] 2 关于行列式的一个介绍 [讲义] ",
+    "url": "http://localhost:4000/schedule/#%E8%AF%BE%E7%A8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8F%90%E5%89%8D%E7%9A%84%E6%9D%90%E6%96%99",
+    "relUrl": "/schedule/#课程的一些提前的材料"
+  },"44": {
+    "doc": "课程安排",
+    "title": "课程课件和讲义",
+    "content": "Lec 0 课程概览(Overview) [课件] Lec 1 向量介绍(Introduction to Vectors) [课件] [讲义] Lec 2 解线性方程组(I)(Solving Linear Equations (I)) [课件] [讲义] Lec 3 矩阵(Matrics) [课件] [讲义] Lec 4 线性空间(向量空间，Vector Space) [课件] [讲义] Lec 5 相关性、基和维度(Independence, Basis and Dimension) [课件] [讲义] Lec 6 矩阵的列秩和行秩(Column Rank and Row Rank of Matrices) [课件] [讲义] Lec 7 解线性方程组(II)(Solving Linear Equations (II)) [课件] [讲义] Lec 8 正交和投影（Orthogonality and Projection） [课件] [讲义] Lec 9 最小二乘法和标准正交基（Least Square Approximations and Orthonormal Bases） [课件] [讲义] Lec 10 行列式（Determinants） [课件一] [课件二] [讲义] ",
+    "url": "http://localhost:4000/schedule/#%E8%AF%BE%E7%A8%8B%E8%AF%BE%E4%BB%B6%E5%92%8C%E8%AE%B2%E4%B9%89",
+    "relUrl": "/schedule/#课程课件和讲义"
+  },"45": {
+    "doc": "课程安排",
+    "title": "课程作业",
+    "content": "HW 1 对1班的学生 HWReleased: Homework #1-不留空版   Homework #1-留空版 对2班的学生 HWReleased: Homework #1-不留空版   Homework #1-留空版 DUE Mar 9 24:00 HW 2 对1班的学生 HWReleased: Homework #2-不留空版   Homework #2-留空版 对2班的学生 HWReleased: Homework #2-不留空版   Homework #2-留空版 DUE Mar 16 24:00 HW 3 对1班的学生 HWReleased: Homework #3-不留空版   Homework #3-留空版 对2班的学生 HWReleased: Homework #3-不留空版   Homework #3-留空版 DUE Mar 23 24:00 HW 4 对1班的学生 HWReleased: Homework #4-不留空版   Homework #4-留空版 对2班的学生 HWReleased: Homework #4-不留空版   Homework #4-留空版 DUE Mar 30 24:00 HW 5 对1班的学生 HWReleased: Homework #5-不留空版   Homework #5-留空版 对2班的学生 HWReleased: Homework #5-不留空版   Homework #5-留空版 DUE Apr 6 24:00 HW 6 对1班的学生 HWReleased: Homework #6-不留空版   Homework #6-留空版 对2班的学生 HWReleased: Homework #6-不留空版   Homework #6-留空版 DUE Apr 13 24:00 HW 7 对1班的学生 HWReleased: Homework #7-不留空版   Homework #7-留空版 对2班的学生 HWReleased: Homework #7-不留空版   Homework #7-留空版 DUE Apr 20 24:00 HW 8 对1班的学生 HWReleased: Homework #8-不留空版   Homework #8-留空版 对2班的学生 HWReleased: Homework #8-不留空版   Homework #8-留空版 DUE Apr 27 24:00 HW 9 对1班的学生 HWReleased: Homework #9-不留空版   Homework #9-留空版 对2班的学生 HWReleased: Homework #9-不留空版   Homework #9-留空版 DUE Mar 11 24:00 HW 10 对1班的学生 HWReleased: Homework #10-不留空版   Homework #10-留空版 对2班的学生 HWReleased: Homework #10-不留空版   Homework #10-留空版 DUE Mar 18 24:00 HW 11 对1班的学生 HWReleased: Homework #11-不留空版   Homework #11-留空版 对2班的学生 HWReleased: Homework #11-不留空版   Homework #11-留空版 DUE Mar 25 24:00 ",
+    "url": "http://localhost:4000/schedule/#%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A",
+    "relUrl": "/schedule/#课程作业"
+  },"46": {
+    "doc": "课程安排",
+    "title": "课程作业解答",
+    "content": "HW 1 HWReleased:Homework #1-sol for Class 1 Homework #1-sol for Class 2 HW 2 HWReleased:Homework #2-sol for Class 1 Homework #2-sol for Class 2 HW 3 HWReleased:Homework #3-sol for Class 1 Homework #3-sol for Class 2 HW 4 HWReleased:Homework #4-sol for Class 1 Homework #4-sol for Class 2 HW 5 HWReleased:Homework #5-sol for Class 1 Homework #5-sol for Class 2 HW 6 HWReleased:Homework #6-sol for Class 1 Homework #6-sol for Class 2 HW 7 HWReleased:Homework #7-sol for Class 1 Homework #7-sol for Class 2 HW 8 HWReleased:Homework #8-sol for Class 1 Homework #8-sol for Class 2 HW 9 HWReleased:Homework #9-sol for Class 1 Homework #9-sol for Class 2 HW 10 HWReleased:Homework #10-sol for Class 1 Homework #10-sol for Class 2 ",
+    "url": "http://localhost:4000/schedule/#%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A%E8%A7%A3%E7%AD%94",
+    "relUrl": "/schedule/#课程作业解答"
+  },"47": {
+    "doc": "课程信息",
+    "title": "课程大纲与政策",
+    "content": " ",
+    "url": "http://localhost:4000/syllabus/#%E8%AF%BE%E7%A8%8B%E5%A4%A7%E7%BA%B2%E4%B8%8E%E6%94%BF%E7%AD%96",
+    "relUrl": "/syllabus/#课程大纲与政策"
+  },"48": {
+    "doc": "课程信息",
+    "title": "目录",
+    "content": ". | 概览 | 课程政策 . | 关于作弊 | 课程作业 | 作业提交要求(重要!) | 期末考试 | 分数计算 | . | 课程资源 | . ",
+    "url": "http://localhost:4000/syllabus/#%E7%9B%AE%E5%BD%95",
+    "relUrl": "/syllabus/#目录"
+  },"49": {
+    "doc": "课程信息",
+    "title": "概览",
+    "content": "在这门课程我们将探索有关线性空间和线性变换的美妙性质。我们将从解方程$A\\mathbf{x}=\\mathbf{b}$开始。$A\\mathbf{x}$这个向量可以视作$A$的列向量一个线性组合，从而解方程的过程也可以理解成寻找一个线性组合系数的过程。从这个角度出发，围绕该线性方程，我们将介绍关于矩阵$A$的四个基本子空间。随后我们将介绍线性代数的基本定理。当然我们也会展示这些定理性质在实际中的一些应用。 . 课程结束以后，学生将学会如下方面的数学知识： . | $A\\mathbf{x}=\\mathbf{b}$的列图像和行图像，以及通过消元法得到的$LU$分解。 | 向量空间、子空间的基本概念，以及矩阵$A$的四个基本子空间。 | 行列式。 | 特征值和特征向量。 | 线性变换。 | 奇异值分解。 | 线性代数的一些应用。 | . ",
+    "url": "http://localhost:4000/syllabus/#%E6%A6%82%E8%A7%88",
+    "relUrl": "/syllabus/#概览"
+  },"50": {
+    "doc": "课程信息",
+    "title": "课程政策",
+    "content": "关于作弊 . 这门课鼓励大家互相讨论，并从网上获取相关资源来完成作业。当然你也可以直接来询问老师。 然而，直接复制粘贴答案是被禁止的。 如果我询问时无法解释清楚你的作业是如何完成的，那我便会判断你是抄袭的。不要冒这个风险。 . 课程作业 . 课程作业HW将每周发布一次，具体内容可以定期查阅课程主页的课程通知和课程安排。 . 请注意，迟交作业将受到25%的成绩惩罚。 . 作业提交要求(重要!) . 本课程可以通过线下提交和邮件提交两种方式提交作业。请注意，超星学习通仅用于发布课程通知，并不参与其他课程活动。 . 关于线下提交： . | 请各位同学在提交的作业上写清楚自己的姓名和学号。 | 线下提交的作业的提交时间为距截止日期之后最近的一次课堂。 | 每次作业我会在下次作业提交的时候进行返还，所以请准备使用练习本的同学准备好两本练习本。 | . 关于邮件提交： . | 请各位同学提交pdf格式的邮件，不要提交图片或者word文档。（但你可以选择将作业拍照拍下来再将图片转成pdf），注意由于本次课程两个班的教学时间安排会有区别，导致进度会有差别，从而请在命名作业文件的时候一定要注明所在的教学班级，如果你是周二下午6-7节课的同学，文件请命名为：2班-学号-姓名-线代第x次作业，如果你是周二下午8-9节可得同学，则请将作业命名为：1班-学号-姓名-线代第x次作业。第x次请以发布的作业标题为准。 | 发送的邮箱为： qzyang(at)shnu.edu.cn | 邮件标题请按照以下格式：学号-姓名-线代第x次作业提交，例如：20210001-杨启哲-线代第x次作业提交，并将完成的作业按上述要求(命名+格式)作为附件进行发送。 | 其中的第x次作业中的x请用阿拉伯数字，而非中文，如第1次作业，而非第一次作业。 | 邮件提交的截止日期就是网站上发布的作业截止日期，请各位同学注意不要晚交。 | . 请各位同学务必严格遵守上述提交要求。 . 期末考试 . 本课程只有一次期末考试，有关期末考试的信息将在之后再公布。 . 分数计算 . 学生的成绩Grade 将由以下两个部分决定： . | 作业成绩HW, | 期末考试成绩Exam, | . 最终的成绩是上述两部分的加权平均： Grade = 40%* HW + 60%* Exam . ",
+    "url": "http://localhost:4000/syllabus/#%E8%AF%BE%E7%A8%8B%E6%94%BF%E7%AD%96",
+    "relUrl": "/syllabus/#课程政策"
+  },"51": {
+    "doc": "课程信息",
+    "title": "课程资源",
+    "content": "本网站线性代数将包含本课程所需的所有课程资源，包括课程通知、课程课件、课程作业以及课程作业的解答。 . 参考资源 . 下面是一些推荐的书籍： . | [1] Gibert Strang. Introduction to Linear Algebra.（该书现在有中文译版 线性代数导论） | [2] 同济大学数学科学学院。 工程数学线性代数(第7版) | [3] Sheldon Axler. Linear Algebra Done Right（该书现在也有中文译版 线性代数应该这样学） | . 下面是一些推荐的在线资源： . | [1] MIT 18.06 | [2] MIT线性代数公开课B站搬运 | . ",
+    "url": "http://localhost:4000/syllabus/#%E8%AF%BE%E7%A8%8B%E8%B5%84%E6%BA%90",
+    "relUrl": "/syllabus/#课程资源"
+  },"52": {
+    "doc": "课程信息",
+    "title": "课程信息",
+    "content": " ",
+    "url": "http://localhost:4000/syllabus/",
+    "relUrl": "/syllabus/"
+  }
+}

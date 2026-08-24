@@ -1,0 +1,17 @@
+<div class="module">
+  {% if page.corrections %}
+  <ol class="corrections-list">
+    {% for item in page.corrections %}
+    <li>
+      <details>
+        <summary>{{ item.title }}{% if item.date %} <span class="correction-date">{{ item.date }}</span>{% endif %}</summary>
+        <div class="correction-detail">
+          {{ item.content | markdownify }}
+          {% if item.thanks %}<p class="correction-thanks">感谢<strong>{{ item.thanks }}</strong>的指正。</p>{% endif %}
+        </div>
+      </details>
+    </li>
+    {% endfor %}
+  </ol>
+  {% endif %}
+</div>

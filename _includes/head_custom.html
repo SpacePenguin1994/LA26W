@@ -1,0 +1,61 @@
+<style>
+  .correction-date {
+    color: #6c757d;
+    font-size: 0.85em;
+    margin-left: 0.8em;
+  }
+
+  /* 去掉 summary 的按钮框样式，同时恢复紫色标题 */
+  .corrections-list summary {
+    display: block;           /* 覆盖 .btn 的 inline-block，确保块级对齐 */
+    background: none;
+    box-shadow: none;
+    padding: 0.2em 0;
+    border-radius: 0;
+    color: #7253ed;           /* 恢复原来的 .btn-outline 紫色 */
+    font-weight: bold;
+    text-align: left;
+  }
+  .corrections-list summary:hover,
+  .corrections-list summary:active {
+    background: none;
+    box-shadow: none;
+    color: #6341eb;           /* 与原 hover 状态相同的略深紫 */
+  }
+  .corrections-list summary:focus {
+    box-shadow: none;
+    outline: auto;
+  }
+
+  /* 修正编号样式：垂直对齐、颜色、字号 */
+  .corrections-list li::before {
+    top: 0.35em !important;                        /* 向下：0.25em → 0.35em */
+    left: -1.3em !important;                       /* 向右：-1.6em → -1.3em */
+    color: #1b1b1b !important;     /* 覆盖主题 color: #959396 */
+    font-size: 1em !important;     /* 覆盖主题 font-size: 12px !important */
+    content: counter(step-counter) "." !important; /* 编号后加句点 */
+  }
+
+  /* 展开内容：字号略小、颜色黑色 */
+  .correction-detail {
+    font-size: 0.9em;
+    color: #1b1b1b;
+    margin-top: 0.4em;
+  }
+
+  /* 给公式最大可用宽度（上一轮已有，保留） */
+  .corrections-list details {
+    margin: 0;
+  }
+  .module:has(.corrections-list) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .correction-thanks {
+    font-size: 0.85em;
+    color: #6c757d;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
+</style>
