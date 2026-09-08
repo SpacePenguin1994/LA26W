@@ -49,7 +49,7 @@ seo:
 
 我们建立了一个长期的课程反馈问卷:
 
-- [《线性代数》课程调查问卷](https://v.wjx.cn/vm/rnjLHWA.aspx#)
+- [《线性代数》课程调查问卷](https://v.wjx.cn/vm/eCkhS6U.aspx#)
 
 欢迎大家提出关于本课程的问题或建议。
 
