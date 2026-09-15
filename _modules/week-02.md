@@ -1,7 +1,21 @@
 ---
 title: 课程课件和讲义
 ---
+Lec 0
+: **课程概览(Overview)**
+  :  \[[课件](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/slides/LALec0-handout.pdf)\]
 
+Lec 1
+: **向量介绍(Introduction to Vectors)**
+     \[[讲义](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/slides/Lecture-1.pdf)\]
+
+Lec 2
+: **解线性方程组(I)(Solving Linear Equations (I))**
+     \[[讲义](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/slides/Lecture-2.pdf)\]
+
+Lec 3
+: **矩阵(Matrics)**
+     \[[讲义](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/slides/Lecture-3.pdf)\]
 <!--
 Lec 0
 : **课程概览(Overview)**
