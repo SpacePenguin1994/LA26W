@@ -16,6 +16,9 @@ Lec 2
 Lec 3
 : **矩阵(Matrics)**
      \[[讲义](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/slides/Lecture-3.pdf)\]
+
+
+
 <!--
 Lec 0
 : **课程概览(Overview)**
