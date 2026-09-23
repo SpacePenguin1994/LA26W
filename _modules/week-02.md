@@ -17,7 +17,13 @@ Lec 3
 : **矩阵(Matrics)**
   :  \[[讲义](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/slides/Lecture-3.pdf)\]
 
+Lec 4
+: **线性空间(向量空间，Vector Space)**
+  :  \[[讲义](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/slides/Lecture-4.pdf)\]
 
+Lec 5
+: **相关性、基和维度(Independence, Basis and Dimension)**
+  :  \[[讲义](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/slides/Lecture-5.pdf)\]
 
 <!--
 Lec 0
