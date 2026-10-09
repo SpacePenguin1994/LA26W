@@ -19,7 +19,7 @@ Lec 3
 
 Lec 4
 : **线性空间(向量空间，Vector Space)**
-  :  \[[讲义](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/slides/Lecture-4.pdf)\]
+  :  \[[讲义](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/slides/Lecture-4.pdf)\]  \[[混音的例子]({{ '/examples/audio-mixing/' | relative_url }})\]
 
 Lec 5
 : **相关性、基和维度(Independence, Basis and Dimension)**

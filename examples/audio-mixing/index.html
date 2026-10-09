@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>听见线性代数 · 混音实验室</title>
+  <meta name="description" content="试听、混音、逐步消元：用两条音轨理解线性组合、矩阵可逆性和线性空间。">
+  <meta name="theme-color" content="#152e52">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23152e52'/%3E%3Cpath d='M9 17v6m6-12v18m5-23v28m5-23v18m6-12v6' stroke='%2354d7ee' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="core.js" defer></script><script src="voice-data.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+<svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z" fill="currentColor"/></symbol><symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/></symbol><symbol id="i-wave" viewBox="0 0 36 32"><path d="M3 14v4m6-10v16m6-20v24m6-25v26m6-21v16m6-10v4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol><symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+<header class="topbar"><div class="topbar-inner">
+  <a class="brand" href="#"><svg><use href="#i-wave"/></svg><strong>听见线性代数</strong><span class="brand-divider"></span><span class="brand-sub">混音实验室</span></a>
+  <nav aria-label="实验步骤"><a href="#sources"><b>01</b> 听原声</a><a href="#mix"><b>02</b> 调混音</a><a href="#eliminate"><b>03</b> 做消元</a></nav>
+</div></header>
+<main>
+  <div class="intro"><div><p class="eyebrow">LINEAR ALGEBRA · SOUND LAB</p><h1>混在一起，还能分开吗？</h1><p class="lead">调整两条音轨的混音比例，听一听，再用消元找回原声。</p></div>
+    <div class="sound-control"><label for="volume">试听音量 <output id="volume-value">80%</output></label><input id="volume" type="range" min="0" max="100" value="80" aria-label="试听音量"><button id="stop-all" class="quiet-button" type="button"><svg><use href="#i-stop"/></svg>停止播放</button></div>
+  </div>
+  <div id="audio-message" role="status" class="audio-message">正在准备音轨…</div>
+  <div class="workspace">
+    <div class="left-stack">
+      <section id="sources" class="panel sources-panel" aria-labelledby="sources-title">
+        <div class="section-heading"><h2 id="sources-title"><span class="section-index">01</span>原始音轨</h2><span class="meta">同一段时间，两种声音</span></div>
+        <div class="track source voice"><div class="track-label"><strong>人声 <i>v</i></strong><span>一段合成朗读</span></div><button class="play-button" data-track="v" aria-label="播放原始人声" disabled><svg><use href="#i-play"/></svg></button><div class="wave-wrap"><canvas data-wave="v" aria-label="原始人声波形"></canvas><span class="playhead"></span></div><span class="track-time" data-time="v">0:00</span></div>
+        <div class="track source music"><div class="track-label"><strong>旋律 <i>m</i></strong><span>一段合成乐曲</span></div><button class="play-button" data-track="m" aria-label="播放原始旋律" disabled><svg><use href="#i-play"/></svg></button><div class="wave-wrap"><canvas data-wave="m" aria-label="原始旋律波形"></canvas><span class="playhead"></span></div><span class="track-time" data-time="m">0:00</span></div>
+      </section>
+      <section id="mix" class="panel mix-panel" aria-labelledby="mix-title">
+        <div class="section-heading"><h2 id="mix-title"><span class="section-index">02</span>混音工作台</h2><button id="reset" class="quiet-button" type="button"><svg><use href="#i-reset"/></svg>重置</button></div>
+        <div class="preset-group" aria-label="混音预设"><button type="button" class="preset active" data-preset="invertible" aria-pressed="true">可逆混音</button><button type="button" class="preset" data-preset="singular" aria-pressed="false">信息重复</button><span>也可以拖动下方滑杆</span></div>
+        <div class="mixer-block"><div class="track mixed"><div class="track-label"><strong>混音 <i>u</i></strong><span id="u-formula" class="formula">u = v + m</span></div><button class="play-button" data-track="u" aria-label="播放混音 u" disabled><svg><use href="#i-play"/></svg></button><div class="wave-wrap"><canvas data-wave="u" aria-label="混音 u 波形"></canvas><span class="playhead"></span></div><span class="track-time" data-time="u">0:00</span></div>
+          <div class="coefficient-row"><div class="coefficient voice"><label for="a">人声 <i>v</i></label><input id="a" data-coefficient="0" type="range" min="-3" max="3" step="0.1" value="1" aria-label="混音 u 的人声系数"><output for="a">1</output></div><div class="coefficient music"><label for="b">旋律 <i>m</i></label><input id="b" data-coefficient="1" type="range" min="-3" max="3" step="0.1" value="1" aria-label="混音 u 的旋律系数"><output for="b">1</output></div></div>
+        </div>
+        <div class="mixer-block"><div class="track mixed"><div class="track-label"><strong>混音 <i>w</i></strong><span id="w-formula" class="formula">w = v + 2m</span></div><button class="play-button" data-track="w" aria-label="播放混音 w" disabled><svg><use href="#i-play"/></svg></button><div class="wave-wrap"><canvas data-wave="w" aria-label="混音 w 波形"></canvas><span class="playhead"></span></div><span class="track-time" data-time="w">0:00</span></div>
+          <div class="coefficient-row"><div class="coefficient voice"><label for="c">人声 <i>v</i></label><input id="c" data-coefficient="2" type="range" min="-3" max="3" step="0.1" value="1" aria-label="混音 w 的人声系数"><output for="c">1</output></div><div class="coefficient music"><label for="d">旋律 <i>m</i></label><input id="d" data-coefficient="3" type="range" min="-3" max="3" step="0.1" value="2" aria-label="混音 w 的旋律系数"><output for="d">2</output></div></div>
+        </div>
+        <p class="small-note">负系数会把波形上下翻转；0 表示不加入这条音轨。</p>
+      </section>
+    </div>
+    <aside class="panel math-panel" aria-labelledby="matrix-title">
+      <div class="section-heading"><h2 id="matrix-title">混音矩阵</h2><span class="small-tag">随比例实时变化</span></div>
+      <div class="matrix-summary"><div class="matrix-equation"><i>A</i><span>=</span><div id="mix-matrix" class="matrix" aria-label="混音矩阵，第一行 1 1，第二行 1 2"><span>1</span><span>1</span><span>1</span><span>2</span></div></div><div class="det-display"><span>det <i>A</i></span><strong id="det-value">1</strong></div></div>
+      <div id="matrix-status" class="status-pill" role="status">可以唯一恢复</div>
+      <div class="graph-heading"><h3>看两组混音比例</h3><span>人声系数 × 旋律系数</span></div>
+      <svg id="vector-plot" viewBox="0 0 360 255" role="img" aria-label="两组混音比例向量，u 为 1,1，w 为 1,2"><text x="180" y="130" text-anchor="middle" fill="#64748b">混音比例向量</text></svg>
+      <div class="graph-legend"><span><b class="legend-line cyan"></b>混音 u 的比例</span><span><b class="legend-line violet"></b>混音 w 的比例</span></div>
+      <div id="matrix-insight" class="insight"><strong>两条混音，保留了两份独立的比例信息。</strong><p>两组比例不共线。通过线性组合，可以分别消去人声或旋律。</p></div>
+      <button class="primary-button" id="start-elimination" type="button">尝试逐步消元</button>
+    </aside>
+  </div>
+  <section id="eliminate" class="panel elimination-panel" aria-labelledby="eliminate-title">
+    <div class="section-heading"><div><h2 id="eliminate-title"><span class="section-index">03</span>用消元找回原声</h2><p class="section-description">对两条混音做同样的行变换，看看最后会留下什么。</p></div><div class="step-actions"><button id="restart-steps" class="text-button" type="button">从头开始</button><button id="next-step" class="secondary-button" type="button">开始消元</button><button id="finish-steps" class="text-button" type="button">直接看结果</button></div></div>
+    <div class="elimination-work"><div class="step-narrative"><div id="step-counter" class="eyebrow">准备就绪</div><h3 id="step-title">从你设置的混音比例出发</h3><p id="step-description">右侧的单位矩阵记录我们对混音做了哪些操作。</p><div id="step-dots" class="step-dots"></div></div><div class="augmented-area"><div class="matrix-captions"><span>人声 / 旋律系数</span><span>对 u / w 的操作</span></div><div id="augmented-matrix" class="augmented-matrix"></div><div id="step-equations" class="step-equations"></div></div></div>
+    <div id="singular-explanation" class="singular-explanation" hidden><h3>相同的混音，可以来自不同的原声</h3><p id="singular-detail"></p><p id="null-example" class="formula"></p></div>
+    <div class="result-grid"><div class="result-card voice"><div class="result-top"><strong>恢复人声 <i>v</i></strong><button class="listen-button" data-track="rv" aria-label="试听恢复的人声" disabled><svg><use href="#i-play"/></svg>试听</button></div><div id="v-recovery" class="recovery-formula">完成消元后查看</div><div class="wave-wrap result-wave"><canvas data-wave="rv" aria-label="恢复后的人声波形"></canvas><span class="playhead"></span></div><span id="v-error" class="result-note">将与原始人声对照</span></div><div class="result-card music"><div class="result-top"><strong>恢复旋律 <i>m</i></strong><button class="listen-button" data-track="rm" aria-label="试听恢复的旋律" disabled><svg><use href="#i-play"/></svg>试听</button></div><div id="m-recovery" class="recovery-formula">完成消元后查看</div><div class="wave-wrap result-wave"><canvas data-wave="rm" aria-label="恢复后的旋律波形"></canvas><span class="playhead"></span></div><span id="m-error" class="result-note">将与原始旋律对照</span></div></div>
+  </section>
+  <section class="concept-panel" aria-labelledby="concept-title"><div class="concept-main"><p class="eyebrow">从这次实验，走进线性空间</p><h2 id="concept-title">整段声音，也可以是向量。</h2><p>这里的 <i>v</i>、<i>m</i> 代表两条完整波形。叠加是加法，调整振幅是数乘；消元使用的，正是这些共同的运算规律。</p></div><div class="concept-example"><div class="concept-formula"><span class="voice-text">v(t)</span> + <span class="music-text">0.3m(t)</span></div><p>在每个时刻，都做同样的线性组合。</p><details><summary>那和 ℝⁿ 有什么关系？</summary><p>连续波形是随时间变化的函数。电脑采样后，将有限个采样值排成一列，就得到 ℝⁿ 中的向量。线性空间让我们直接研究波形的共同规律，再选择具体表示来计算。</p><p>如果两条原音轨线性无关，它们张成一个二维空间；可逆混音得到的两条音轨，是这个空间的另一组基。</p></details></div></section>
+  <footer><span>听见线性代数 · 交互课堂</span><span>全部声音在浏览器中混合与恢复</span></footer>
+</main>
+<noscript><div class="noscript">这个实验需要启用 JavaScript，才能播放音轨、调整混音和进行消元。</div></noscript>
+</body></html>
