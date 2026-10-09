@@ -7,13 +7,13 @@
   <meta name="theme-color" content="#152e52">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23152e52'/%3E%3Cpath d='M9 17v6m6-12v18m5-23v28m5-23v18m6-12v6' stroke='%2354d7ee' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
-  <script src="core.js" defer></script><script src="voice-data.js" defer></script><script src="app.js" defer></script>
+  <script src="core.js" defer></script><script src="voice-data.js" defer></script><script src="harmonics.js" defer></script><script src="app.js" defer></script>
 </head>
 <body>
 <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z" fill="currentColor"/></symbol><symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/></symbol><symbol id="i-wave" viewBox="0 0 36 32"><path d="M3 14v4m6-10v16m6-20v24m6-25v26m6-21v16m6-10v4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol><symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
 <header class="topbar"><div class="topbar-inner">
   <a class="brand" href="#"><svg><use href="#i-wave"/></svg><strong>听见线性代数</strong><span class="brand-divider"></span><span class="brand-sub">混音实验室</span></a>
-  <nav aria-label="实验步骤"><a href="#sources"><b>01</b> 听原声</a><a href="#mix"><b>02</b> 调混音</a><a href="#eliminate"><b>03</b> 做消元</a><a href="#linear-space"><b>04</b> 线性空间</a></nav>
+  <nav aria-label="实验步骤"><a href="#sources"><b>01</b> 听原声</a><a href="#mix"><b>02</b> 调混音</a><a href="#eliminate"><b>03</b> 做消元</a><a href="#harmonics"><b>04</b> 调音色</a><a href="#linear-space"><b>05</b> 线性空间</a></nav>
 </div></header>
 <main>
   <div class="intro"><div><p class="eyebrow">LINEAR ALGEBRA · SOUND LAB</p><h1>混在一起，还能分开吗？</h1><p class="lead">调整两条音轨的混音比例，听一听，再用消元找回原声。</p></div>
@@ -60,8 +60,39 @@
     <div id="singular-explanation" class="singular-explanation" hidden><h3>相同的混音，可以来自不同的原声</h3><p id="singular-detail"></p><p id="null-example" class="formula"></p></div>
     <div class="result-grid"><div class="result-card voice"><div class="result-top"><strong>恢复人声 <i>v</i></strong><button class="listen-button" data-track="rv" aria-label="试听恢复的人声" disabled><svg><use href="#i-play"/></svg>试听</button></div><div id="v-recovery" class="recovery-formula">完成消元后查看</div><div class="wave-wrap result-wave"><canvas data-wave="rv" aria-label="恢复后的人声波形"></canvas><span class="playhead"></span></div><span id="v-error" class="result-note">将与原始人声对照</span></div><div class="result-card music"><div class="result-top"><strong>恢复旋律 <i>m</i></strong><button class="listen-button" data-track="rm" aria-label="试听恢复的旋律" disabled><svg><use href="#i-play"/></svg>试听</button></div><div id="m-recovery" class="recovery-formula">完成消元后查看</div><div class="wave-wrap result-wave"><canvas data-wave="rm" aria-label="恢复后的旋律波形"></canvas><span class="playhead"></span></div><span id="m-error" class="result-note">将与原始旋律对照</span></div></div>
   </section>
+  <section id="harmonics" class="panel harmonic-panel" aria-labelledby="harmonics-title">
+    <div class="section-heading"><div><h2 id="harmonics-title"><span class="section-index">04</span>用线性组合，调出不同音色</h2><p class="section-description">同一个音高，也能听起来柔和、空灵或明亮。先播放，再拖动谐波系数试试。</p></div><span class="harmonic-badge">基音 220 Hz · A3</span></div>
+    <div class="harmonic-presets" role="group" aria-label="音色预设">
+      <button type="button" data-harmonic-preset="pure" aria-pressed="true"><strong>纯音</strong><span>只保留基音</span></button>
+      <button type="button" data-harmonic-preset="odd" aria-pressed="false"><strong>奇次泛音</strong><span>加入第 3、5 次谐波</span></button>
+      <button type="button" data-harmonic-preset="rich" aria-pressed="false"><strong>丰富泛音</strong><span>加入更多高频成分</span></button>
+    </div>
+    <div class="harmonic-workspace">
+      <div class="harmonic-sliders">
+        <div class="harmonic-row harmonic-fixed"><div class="harmonic-label"><strong>h₁ <span>基音</span></strong><small>220 Hz</small></div><span class="harmonic-fixed-note">保留基音，专注比较音色</span><output>1</output></div>
+        <div class="harmonic-row"><label class="harmonic-label" for="harmonic-2"><strong>h₂ <span>第 2 次</span></strong><small>440 Hz</small></label><input id="harmonic-2" type="range" min="0" max="1" step="0.01" value="0" data-harmonic="1" aria-label="第 2 次谐波系数"><output for="harmonic-2">0</output></div>
+        <div class="harmonic-row"><label class="harmonic-label" for="harmonic-3"><strong>h₃ <span>第 3 次</span></strong><small>660 Hz</small></label><input id="harmonic-3" type="range" min="0" max="1" step="0.01" value="0" data-harmonic="2" aria-label="第 3 次谐波系数"><output for="harmonic-3">0</output></div>
+        <div class="harmonic-row"><label class="harmonic-label" for="harmonic-4"><strong>h₄ <span>第 4 次</span></strong><small>880 Hz</small></label><input id="harmonic-4" type="range" min="0" max="1" step="0.01" value="0" data-harmonic="3" aria-label="第 4 次谐波系数"><output for="harmonic-4">0</output></div>
+        <div class="harmonic-row"><label class="harmonic-label" for="harmonic-5"><strong>h₅ <span>第 5 次</span></strong><small>1100 Hz</small></label><input id="harmonic-5" type="range" min="0" max="1" step="0.01" value="0" data-harmonic="4" aria-label="第 5 次谐波系数"><output for="harmonic-5">0</output></div>
+        <div class="harmonic-row"><label class="harmonic-label" for="harmonic-6"><strong>h₆ <span>第 6 次</span></strong><small>1320 Hz</small></label><input id="harmonic-6" type="range" min="0" max="1" step="0.01" value="0" data-harmonic="5" aria-label="第 6 次谐波系数"><output for="harmonic-6">0</output></div>
+        <p class="harmonic-hint">试一试：播放“纯音”，再把 h₃ 拉到 0.8。留意声音的质感怎样变化。</p>
+      </div>
+      <div class="harmonic-result">
+        <div class="harmonic-plot-heading"><h3>正弦波相加，波形也变了</h3><span>显示两个基音周期</span></div>
+        <svg id="harmonic-wave" viewBox="0 0 560 220" role="img" aria-label="谐波合成波形"></svg>
+        <div class="harmonic-wave-legend"><span><b class="legend-line cyan"></b>合成波形</span><span><b class="legend-line reference-line"></b>基音 h₁</span><span id="harmonic-scale">纵轴：原始振幅</span></div>
+        <div class="harmonic-formula-box"><span>当前线性组合</span><div id="harmonic-formula" class="lesson-formula">s = h₁</div><div id="harmonic-coordinates" class="harmonic-coordinates">系数向量 (1, 0, 0, 0, 0, 0)</div></div>
+        <div class="harmonic-playback"><button id="harmonic-tone" type="button" class="secondary-button" aria-pressed="false"><svg><use href="#i-play"/></svg><span>播放长音</span></button><button id="harmonic-melody" type="button" class="secondary-button" aria-pressed="false"><svg><use href="#i-play"/></svg><span>听一段短旋律</span></button><button id="harmonic-stop" class="quiet-button" type="button">停止</button></div>
+        <p id="harmonic-status" class="harmonic-status" role="status">点击播放后，可以边拖动边听。</p>
+        <label class="harmonic-match"><input id="harmonic-match" type="checkbox" checked>减小音量差，专注比较音色</label>
+        <details class="harmonic-level-note"><summary>试听时如何处理音量？</summary><p>开启后，会对合成声音整体缩放，使长音的均方根振幅一致；各谐波之间的比例不变，主观响度仍可能不同。关闭后使用固定播放增益，更直接地听到振幅随系数变化。公式和图始终显示缩放前的线性组合。</p></details>
+      </div>
+    </div>
+    <div class="harmonic-explanation"><div><h3>这里的“声音向量”是什么？</h3><p>长音实验取 hₖ(t) = sin(2π · k · 220t)。每个 hₖ 都是一条完整的正弦波；它的频率是基音的 k 倍，称为第 k 次谐波。改变它们的组合比例，就能改变音色。</p></div><div><h3>从调音色，回到线性空间</h3><p>六条波形的线性组合构成 span{h₁, …, h₆}。本环节固定 h₁ 的系数为 1，调节其余系数来比较音色；允许全部系数取任意实数，才得到完整的线性空间。</p></div></div>
+    <p class="harmonic-footnote">听短旋律时，每个音符沿用同一组谐波比例；图与频率标签展示的是 220 Hz 长音。预设用于比较合成音色，并非真实乐器的仿真。</p>
+  </section>
   <section id="linear-space" class="space-lesson panel" aria-labelledby="concept-title">
-    <header class="lesson-intro"><p class="eyebrow">04 · 从混音实验，走进线性空间</p><h2 id="concept-title">为什么整段声音，也可以是向量？</h2><p>刚才的消元里，等号两边有时是人声，有时是旋律。它们并不是一个数，却仍然能相加、数乘、抵消。<strong>线性空间研究的，就是这些运算共同遵守的规律。</strong></p></header>
+    <header class="lesson-intro"><p class="eyebrow">05 · 从声音实验，走进线性空间</p><h2 id="concept-title">为什么整段声音，也可以是向量？</h2><p>刚才的消元里，等号两边有时是人声，有时是旋律。调音色时，我们又把几条正弦波组合起来。它们并不是一个数，却仍然能相加、数乘、抵消。<strong>线性空间研究的，就是这些运算共同遵守的规律。</strong></p></header>
 
     <section class="lesson-section" aria-labelledby="sound-vector-title">
       <div class="lesson-heading"><span class="lesson-number">01</span><div><h3 id="sound-vector-title">先把声音看成一条完整波形</h3><p>固定同一段时间 0 ≤ t ≤ T，用 f(t) 表示时刻 t 的振幅。</p></div></div>

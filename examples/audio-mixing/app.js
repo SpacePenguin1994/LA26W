@@ -4,6 +4,13 @@
   const trackNames={v:'原始人声',m:'原始旋律',u:'混音 u',w:'混音 w',rv:'恢复的人声',rm:'恢复的旋律'};
   const state={matrix:[1,1,1,2],tracks:{},steps:[],step:-1,ready:false,done:false,sampleRate:24000,duration:0,playing:null,context:null,source:null,gain:null,animation:0,audioRequest:0};
   const graph={selected:'u',drag:null,cx:168,cy:127,unit:33};
+  let harmonicLab;
+  function getAudioContext(){
+    const AudioContext=window.AudioContext||window.webkitAudioContext;
+    if(!AudioContext)throw new Error('此浏览器暂不支持音频播放，请用新版浏览器打开。');
+    if(!state.context)state.context=new AudioContext();
+    return state.context;
+  }
   function readWave(base64){
     if(!base64) throw new Error('音频素材尚未就绪，请刷新页面。');
     const raw=atob(base64),bytes=new Uint8Array(raw.length);
@@ -30,6 +37,7 @@
     button.setAttribute('aria-pressed',String(isPlaying));
   }
   function stopAudio(){
+    harmonicLab?.stop();
     state.audioRequest++;
     cancelAnimationFrame(state.animation);
     if(state.source){state.source.onended=null;try{state.source.stop();}catch{}state.source.disconnect();state.source=null;}
@@ -45,10 +53,7 @@
     stopAudio();
     const request=state.audioRequest;
     try{
-      const AudioContext=window.AudioContext||window.webkitAudioContext;
-      if(!AudioContext) throw new Error('此浏览器暂不支持音频播放，请用新版浏览器打开。');
-      if(!state.context) state.context=new AudioContext();
-      await state.context.resume();
+      await getAudioContext().resume();
       if(request!==state.audioRequest)return;
       const data=state.tracks[key],buffer=state.context.createBuffer(1,data.length,state.sampleRate);buffer.copyToChannel(data,0);
       const source=state.context.createBufferSource(),gain=state.context.createGain();
@@ -250,7 +255,7 @@
   });
   ['pointerup','pointercancel','lostpointercapture'].forEach(type=>vectorPlot.addEventListener(type,endDrag));
   $('reset').addEventListener('click',()=>updateMatrix([1,1,1,2]));$('stop-all').addEventListener('click',stopAudio);
-  $('volume').addEventListener('input',()=>{$('volume-value').value=`${$('volume').value}%`;if(state.gain&&state.context)state.gain.gain.setTargetAtTime(.25*Number($('volume').value)/100,state.context.currentTime,.03);});
+  $('volume').addEventListener('input',()=>{$('volume-value').value=`${$('volume').value}%`;if(state.gain&&state.context)state.gain.gain.setTargetAtTime(.25*Number($('volume').value)/100,state.context.currentTime,.03);harmonicLab?.syncVolume();});
   $('start-elimination').addEventListener('click',()=>{advanceStep('start');$('eliminate').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});});
   $('next-step').addEventListener('click',()=>advanceStep('next'));$('finish-steps').addEventListener('click',()=>advanceStep('finish'));$('restart-steps').addEventListener('click',()=>advanceStep('start'));
   document.addEventListener('keydown',event=>{if(event.key==='Escape')stopAudio();});window.addEventListener('pagehide',stopAudio);
@@ -261,6 +266,7 @@
     document.querySelectorAll('[data-time]').forEach(el=>el.textContent=timeLabel(state.duration));
   }catch(error){$('audio-message').textContent=error.message;$('audio-message').classList.add('error');}
   updateMatrix(state.matrix);
+  if(window.HarmonicLab)harmonicLab=window.HarmonicLab.init({getContext:getAudioContext,stopOthers:stopAudio,volume:()=>Number($('volume').value)/100});
   function snapshot(){const analysis=M.analyze(state.matrix);return {matrix:state.matrix.slice(),determinant:analysis.det,rank:analysis.rank,invertible:analysis.invertible,eliminationStep:state.step,eliminationComplete:state.done,audioReady:state.ready};}
   const context=document.modelContext;
   if(context?.registerTool){
