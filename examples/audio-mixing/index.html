@@ -13,7 +13,7 @@
 <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z" fill="currentColor"/></symbol><symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/></symbol><symbol id="i-wave" viewBox="0 0 36 32"><path d="M3 14v4m6-10v16m6-20v24m6-25v26m6-21v16m6-10v4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol><symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
 <header class="topbar"><div class="topbar-inner">
   <a class="brand" href="#"><svg><use href="#i-wave"/></svg><strong>听见线性代数</strong><span class="brand-divider"></span><span class="brand-sub">混音实验室</span></a>
-  <nav aria-label="实验步骤"><a href="#sources"><b>01</b> 听原声</a><a href="#mix"><b>02</b> 调混音</a><a href="#eliminate"><b>03</b> 做消元</a></nav>
+  <nav aria-label="实验步骤"><a href="#sources"><b>01</b> 听原声</a><a href="#mix"><b>02</b> 调混音</a><a href="#eliminate"><b>03</b> 做消元</a><a href="#linear-space"><b>04</b> 线性空间</a></nav>
 </div></header>
 <main>
   <div class="intro"><div><p class="eyebrow">LINEAR ALGEBRA · SOUND LAB</p><h1>混在一起，还能分开吗？</h1><p class="lead">调整两条音轨的混音比例，听一听，再用消元找回原声。</p></div>
@@ -43,9 +43,13 @@
       <div class="section-heading"><h2 id="matrix-title">混音矩阵</h2><span class="small-tag">随比例实时变化</span></div>
       <div class="matrix-summary"><div class="matrix-equation"><i>A</i><span>=</span><div id="mix-matrix" class="matrix" aria-label="混音矩阵，第一行 1 1，第二行 1 2"><span>1</span><span>1</span><span>1</span><span>2</span></div></div></div>
       <div id="matrix-status" class="status-pill" role="status">可以唯一恢复</div>
-      <div class="graph-heading"><h3>看两组混音比例</h3><span>人声系数 × 旋律系数</span></div>
-      <svg id="vector-plot" viewBox="0 0 360 255" role="img" aria-label="两组混音比例向量，u 为 1,1，w 为 1,2"><text x="180" y="130" text-anchor="middle" fill="#64748b">混音比例向量</text></svg>
-      <div class="graph-legend"><span><b class="legend-line cyan"></b>混音 u 的比例</span><span><b class="legend-line violet"></b>混音 w 的比例</span></div>
+      <div class="vector-controls">
+        <div class="graph-heading"><h3>拖动箭头，调整混音</h3><span>人声系数 × 旋律系数</span></div>
+        <svg id="vector-plot" viewBox="0 0 360 255" role="group" tabindex="0" aria-label="混音比例控制图" aria-describedby="graph-help"><text x="180" y="130" text-anchor="middle" fill="#64748b">混音比例向量</text></svg>
+        <div class="vector-picker" role="group" aria-label="选择要调整的混音"><button type="button" data-vector-select="u" aria-pressed="true"><b class="legend-line cyan"></b>调整 u <span id="u-coordinates">(1, 1)</span></button><button type="button" data-vector-select="w" aria-pressed="false"><b class="legend-line violet"></b>调整 w <span id="w-coordinates">(1, 2)</span></button></div>
+        <p id="graph-help" class="graph-help">拖动箭头或圆点；重合时先选 u 或 w。也可聚焦图或选择按钮，用方向键微调，按住 Shift 加快。</p>
+        <span id="graph-announcement" class="sr-only" role="status" aria-live="polite"></span>
+      </div>
       <div id="matrix-insight" class="insight"><strong>两条混音，保留了两份独立的比例信息。</strong><p>两组比例不共线。通过线性组合，可以分别消去人声或旋律。</p></div>
       <button class="primary-button" id="start-elimination" type="button">尝试逐步消元</button>
     </aside>
@@ -56,7 +60,59 @@
     <div id="singular-explanation" class="singular-explanation" hidden><h3>相同的混音，可以来自不同的原声</h3><p id="singular-detail"></p><p id="null-example" class="formula"></p></div>
     <div class="result-grid"><div class="result-card voice"><div class="result-top"><strong>恢复人声 <i>v</i></strong><button class="listen-button" data-track="rv" aria-label="试听恢复的人声" disabled><svg><use href="#i-play"/></svg>试听</button></div><div id="v-recovery" class="recovery-formula">完成消元后查看</div><div class="wave-wrap result-wave"><canvas data-wave="rv" aria-label="恢复后的人声波形"></canvas><span class="playhead"></span></div><span id="v-error" class="result-note">将与原始人声对照</span></div><div class="result-card music"><div class="result-top"><strong>恢复旋律 <i>m</i></strong><button class="listen-button" data-track="rm" aria-label="试听恢复的旋律" disabled><svg><use href="#i-play"/></svg>试听</button></div><div id="m-recovery" class="recovery-formula">完成消元后查看</div><div class="wave-wrap result-wave"><canvas data-wave="rm" aria-label="恢复后的旋律波形"></canvas><span class="playhead"></span></div><span id="m-error" class="result-note">将与原始旋律对照</span></div></div>
   </section>
-  <section class="concept-panel" aria-labelledby="concept-title"><div class="concept-main"><p class="eyebrow">从这次实验，走进线性空间</p><h2 id="concept-title">整段声音，也可以是向量。</h2><p>这里的 <i>v</i>、<i>m</i> 代表两条完整波形。叠加是加法，调整振幅是数乘；消元使用的，正是这些共同的运算规律。</p></div><div class="concept-example"><div class="concept-formula"><span class="voice-text">v(t)</span> + <span class="music-text">0.3m(t)</span></div><p>在每个时刻，都做同样的线性组合。</p><details><summary>那和 ℝⁿ 有什么关系？</summary><p>连续波形是随时间变化的函数。电脑采样后，将有限个采样值排成一列，就得到 ℝⁿ 中的向量。线性空间让我们直接研究波形的共同规律，再选择具体表示来计算。</p><p>如果两条原音轨线性无关，它们张成一个二维空间；可逆混音得到的两条音轨，是这个空间的另一组基。</p></details></div></section>
+  <section id="linear-space" class="space-lesson panel" aria-labelledby="concept-title">
+    <header class="lesson-intro"><p class="eyebrow">04 · 从混音实验，走进线性空间</p><h2 id="concept-title">为什么整段声音，也可以是向量？</h2><p>刚才的消元里，等号两边有时是人声，有时是旋律。它们并不是一个数，却仍然能相加、数乘、抵消。<strong>线性空间研究的，就是这些运算共同遵守的规律。</strong></p></header>
+
+    <section class="lesson-section" aria-labelledby="sound-vector-title">
+      <div class="lesson-heading"><span class="lesson-number">01</span><div><h3 id="sound-vector-title">先把声音看成一条完整波形</h3><p>固定同一段时间 0 ≤ t ≤ T，用 f(t) 表示时刻 t 的振幅。</p></div></div>
+      <div class="operation-grid">
+        <article class="operation-card"><span class="operation-label">向量加法 · 叠加</span><div class="lesson-formula">(f + g)(t) = f(t) + g(t)</div><p>把两段声音对齐，在每个时刻将振幅相加。比如，人声加旋律得到混音。</p></article>
+        <article class="operation-card"><span class="operation-label">数乘 · 缩放振幅</span><div class="lesson-formula">(αf)(t) = αf(t)</div><p>把每个时刻的振幅都乘同一个实数。0.5f 把振幅减半；−f 把波形上下翻转。</p></article>
+      </div>
+      <p class="lesson-note">负数倍是波形反相，并非倒放；乘以 2 指振幅变成两倍，并不表示主观听感的响度恰好变成两倍。</p>
+    </section>
+
+    <section class="lesson-section" aria-labelledby="definition-title">
+      <div class="lesson-heading"><span class="lesson-number">02</span><div><h3 id="definition-title">实线性空间：一个集合，两种运算，八条规律</h3><p>其中的元素叫作“向量”。向量可以是数列、函数、矩阵，也可以是我们正在研究的声音波形。</p></div></div>
+      <div class="definition-box"><p>给定一个<strong>非空集合 V</strong>，在其中定义加法和实数数乘。首先要求运算<strong>封闭</strong>：对任意 x, y ∈ V 和 α ∈ ℝ，</p><div class="lesson-formula">x + y ∈ V，&nbsp; αx ∈ V。</div><p>也就是说，运算结果仍在这个集合里。若再满足下面八条规律，就称 V 为<strong>实线性空间</strong>，也叫<strong>实向量空间</strong>。</p></div>
+      <p class="axiom-intro">下面 x、y、z 是 V 中任意元素，α、β 是任意实数。右侧的声音解释都指对齐后的理想波形。</p>
+      <ol class="axiom-list">
+        <li><div><h4>加法交换律</h4><span class="lesson-formula">x + y = y + x</span></div><p>两段对齐的波形相加时，交换相加顺序，结果不变。</p></li>
+        <li><div><h4>加法结合律</h4><span class="lesson-formula">(x + y) + z = x + (y + z)</span></div><p>三条音轨分组叠加，最终得到同一条波形。</p></li>
+        <li><div><h4>存在零向量</h4><span class="lesson-formula">存在 0 ∈ V，使 x + 0 = x</span></div><p>全程振幅为 0 的静音就是零向量；加入静音不改变原声。</p></li>
+        <li><div><h4>每个向量都有相反向量</h4><span class="lesson-formula">每个 x 都有 −x ∈ V，使 x + (−x) = 0</span></div><p>原波形与它的反相波形逐点相加，恰好抵消成静音。</p></li>
+        <li><div><h4>数乘单位律</h4><span class="lesson-formula">1x = x</span></div><p>振幅乘以 1，仍是原来的声音。</p></li>
+        <li><div><h4>数乘结合律</h4><span class="lesson-formula">α(βx) = (αβ)x</span></div><p>先缩小到一半，再放大两倍，振幅回到原样。</p></li>
+        <li><div><h4>数乘对向量加法的分配律</h4><span class="lesson-formula">α(x + y) = αx + αy</span></div><p>先混音再缩放，等于把各条音轨同样缩放后再混音。</p></li>
+        <li><div><h4>数乘对实数加法的分配律</h4><span class="lesson-formula">(α + β)x = αx + βx</span></div><p>0.3 倍人声加 0.7 倍同一人声，正好得到原人声。</p></li>
+      </ol>
+      <div class="sound-model"><h4>声音为什么满足这些要求？</h4><p>取 V = C([0, T], ℝ)，即这段时间内所有实值连续波形的集合。两条连续波形相加、乘实数后仍连续，所以运算封闭；静音和反相波形也都在其中。其余等式在每个时刻都化为实数的运算规律，因此对整条波形成立。</p><p class="lesson-note">这里使用不限制振幅大小的理想模型。若强行要求振幅始终在 −1 到 1 之间，放大后就可能超出范围，这样的集合对数乘不封闭。</p></div>
+    </section>
+
+    <section class="lesson-section" aria-labelledby="span-title">
+      <div class="lesson-heading"><span class="lesson-number">03</span><div><h3 id="span-title">两条音轨，能组成一个怎样的空间？</h3><p>只用固定的人声 v 和旋律 m，把所有可能的混音收集起来。</p></div></div>
+      <div class="span-example"><div><span class="operation-label">由 v、m 张成的空间</span><div class="lesson-formula">W = span{v, m}<br>= {av + bm : a, b ∈ ℝ}</div><p>它是声音空间的一个<strong>子空间</strong>：其中的元素是声音，并且相加、数乘后仍留在 W 中。</p></div><div class="closure-example"><h4>为什么仍留在里面？</h4><p>若 u = av + bm，w = cv + dm，那么</p><div class="lesson-formula">u + w = (a + c)v + (b + d)m<br>ku = (ka)v + (kb)m。</div><p>结果仍是 v、m 的线性组合。取 a = b = 0，还能得到静音。</p></div></div>
+      <div class="experiment-connection"><span class="operation-label">你现在设置的两条混音</span><div class="current-combinations"><span id="concept-u" class="lesson-formula voice-text">u = v + m</span><span id="concept-w" class="lesson-formula music-text">w = v + 2m</span></div><p>右图画的是它们的<strong>混合系数 (a, b)</strong>，不是声音的时间—振幅波形。一个点对应一整段混音。</p></div>
+      <p>如果 v、m <strong>线性无关</strong>，也就是 αv + βm = 0 只能在 α = β = 0 时成立，那么每段混音的系数唯一。此时 {v, m} 是 W 的一组<strong>基</strong>，W 的<strong>维数</strong>为 2，(a, b) 就是声音 av + bm 在这组基下的坐标。</p>
+      <p class="lesson-note">“二维”表示只需两个独立的系数来描述 W 中的声音，不是每段声音只有两个采样值。滑杆的 −3 到 3 只是展示范围；完整的 W 允许任意实系数。</p>
+    </section>
+
+    <section class="lesson-section" aria-labelledby="why-space-title">
+      <div class="lesson-heading"><span class="lesson-number">04</span><div><h3 id="why-space-title">既然能写成坐标，为什么还要讲线性空间？</h3><p>坐标帮助我们计算，线性空间帮助我们识别不同对象背后的同一套结构。</p></div></div>
+      <div class="representation-grid">
+        <article><span class="operation-label">电脑怎样保存声音</span><h4>N 个采样值：ℝᴺ</h4><div class="lesson-formula">f ↦ (f(t₁), …, f(t<sub>N</sub>))</div><p>固定采样时刻后，把振幅排成一列。本网页的数字音频确实在 ℝᴺ 中做运算；混音就是对应位置相加、数乘。</p></article>
+        <article><span class="operation-label">这个实验怎样描述混音</span><h4>两个混音系数：ℝ²</h4><div class="lesson-formula">av + bm ↔ (a, b)</div><p>当 v、m 线性无关时，只需两个数描述它们张成的空间。换一组基，同一段声音的坐标可能改变，声音本身不变。</p></article>
+        <article><span class="operation-label">数学怎样描述连续波形</span><h4>一个函数：C([0, T], ℝ)</h4><div class="lesson-formula">t ↦ f(t)</div><p>这里保留每个时刻的振幅。有限个采样值无法唯一确定任意连续波形；整个连续函数空间也无法由固定有限个基波形张成。</p></article>
+      </div>
+      <div class="why-callout"><h4>把共同规律提炼出来，才可以把同一个方法用于不同对象。</h4><p>有限维实线性空间选好基后，都可以用 ℝⁿ 的坐标来计算。但在选坐标之前，我们就能研究声音、矩阵、多项式的相加与数乘；对于整个连续函数空间，还需要容纳无限维情形。线性空间让我们把这些情况放在同一套理论中讨论。</p></div>
+    </section>
+
+    <section class="lesson-section lesson-return" aria-labelledby="return-title">
+      <div class="lesson-heading"><span class="lesson-number">05</span><div><h3 id="return-title">回看消元：我们一直在使用这些规律</h3><p>以“可逆混音”预设 u = v + m、w = v + 2m 为例：</p></div></div>
+      <div class="return-equations"><div class="lesson-formula">w − u = (v + 2m) − (v + m) = m</div><div class="lesson-formula">2u − w = 2(v + m) − (v + 2m) = v</div></div>
+      <p>这里用到分配律、结合律和相反向量的抵消。它们对整段声音成立，所以消元能直接找回音轨。<strong>线性代数的方法能处理声音，正是因为声音的这些运算具有线性空间的结构。</strong></p><a class="back-to-lab" href="#mix">回到混音工作台再试一次</a>
+    </section>
+  </section>
   <footer><span>听见线性代数 · 交互课堂</span><span>全部声音在浏览器中混合与恢复</span></footer>
 </main>
 <noscript><div class="noscript">这个实验需要启用 JavaScript，才能播放音轨、调整混音和进行消元。</div></noscript>

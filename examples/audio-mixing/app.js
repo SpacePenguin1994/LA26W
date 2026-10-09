@@ -3,6 +3,7 @@
   const M=window.AudioMath, $=id=>document.getElementById(id);
   const trackNames={v:'原始人声',m:'原始旋律',u:'混音 u',w:'混音 w',rv:'恢复的人声',rm:'恢复的旋律'};
   const state={matrix:[1,1,1,2],tracks:{},steps:[],step:-1,ready:false,done:false,sampleRate:24000,duration:0,playing:null,context:null,source:null,gain:null,animation:0,audioRequest:0};
+  const graph={selected:'u',drag:null,cx:168,cy:127,unit:33};
   function readWave(base64){
     if(!base64) throw new Error('音频素材尚未就绪，请刷新页面。');
     const raw=atob(base64),bytes=new Uint8Array(raw.length);
@@ -89,7 +90,7 @@
     }
   }
   function plotVectors(){
-    const [a,b,c,d]=state.matrix,{rank}=M.analyze(state.matrix),cx=168,cy=127,unit=33;
+    const [a,b,c,d]=state.matrix,{rank}=M.analyze(state.matrix),{cx,cy,unit}=graph;
     const px=x=>cx+x*unit,py=y=>cy-y*unit;
     let svg='<defs><marker id="arrow-u" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#079fca"/></marker><marker id="arrow-w" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#8851d9"/></marker></defs>';
     for(let k=-3;k<=3;k++){
@@ -98,12 +99,57 @@
     }
     svg+=`<path d="M${px(-3.3)} ${cy}H${px(3.4)}M${cx} ${py(-3.3)}V${py(3.4)}" stroke="#9daec3" stroke-width="1.4"/><text x="${cx-10}" y="${cy+17}" text-anchor="end" fill="#8393a9" font-size="12">0</text><text x="${px(3.4)+5}" y="${cy+5}" fill="#6b7e98" font-size="12">人声</text><text x="${cx+10}" y="${py(3.4)}" fill="#6b7e98" font-size="12">旋律</text>`;
     if(rank===2)svg+=`<path d="M${cx} ${cy}L${px(a)} ${py(b)}L${px(c)} ${py(d)}Z" fill="#50c5e4" opacity=".12"/>`;
-    [[a,b,'u','#079fca'],[c,d,'w','#8851d9']].forEach(([x,y,name,color],index)=>{
-      if(Math.abs(x)+Math.abs(y)>M.EPS)svg+=`<path d="M${cx} ${cy}L${px(x)} ${py(y)}" stroke="${color}" stroke-width="${index?2.5:3.5}" ${rank<2&&index?'stroke-dasharray="5 3"':''} marker-end="url(#arrow-${name})"/>`;
-      svg+=`<circle cx="${px(x)}" cy="${py(y)}" r="3.5" fill="${color}"/><text x="${px(x)+(x>1.5?-10:10)}" y="${py(y)+(index?-10:20)}" text-anchor="${x>1.5?'end':'start'}" fill="${color}" font-size="14" font-weight="600">${name} (${M.format(x)}, ${M.format(y)})</text>`;
+    // Draw the selected vector last so even coincident or zero vectors remain draggable.
+    [[a,b,'u','#079fca'],[c,d,'w','#8851d9']].sort((p,q)=>Number(p[2]===graph.selected)-Number(q[2]===graph.selected)).forEach(([x,y,name,color])=>{
+      const selected=name===graph.selected,index=name==='w'?1:0;
+      svg+=`<g data-vector="${name}" class="draggable-vector" aria-hidden="true"><path d="M${cx} ${cy}L${px(x)} ${py(y)}" stroke="transparent" stroke-width="20" fill="none" pointer-events="stroke"/>`;
+      if(Math.abs(x)+Math.abs(y)>M.EPS)svg+=`<path d="M${cx} ${cy}L${px(x)} ${py(y)}" stroke="${color}" stroke-width="${selected?3.5:2.5}" ${rank<2&&index?'stroke-dasharray="5 3"':''} marker-end="url(#arrow-${name})"/>`;
+      svg+=`<circle cx="${px(x)}" cy="${py(y)}" r="18" fill="transparent" pointer-events="all"/>`;
+      if(selected)svg+=`<circle cx="${px(x)}" cy="${py(y)}" r="10" fill="${color}" fill-opacity=".12" stroke="${color}" stroke-opacity=".5"/>`;
+      svg+=`<circle cx="${px(x)}" cy="${py(y)}" r="5" fill="${color}" stroke="white" stroke-width="1.5"/><text x="${px(x)+(x>1.5?-14:14)}" y="${py(y)+(index?-14:23)}" text-anchor="${x>1.5?'end':'start'}" fill="${color}" font-size="14" font-weight="600">${name} (${M.format(x)}, ${M.format(y)})</text></g>`;
     });
     $('vector-plot').innerHTML=svg;
-    $('vector-plot').setAttribute('aria-label',`混音比例向量 u 为 (${a},${b})，w 为 (${c},${d})，${rank===2?'两组比例不共线':'两组比例线性相关'}`);
+    $('vector-plot').setAttribute('aria-label',`混音比例控制图，当前调整 ${graph.selected}。u 为 (${a},${b})，w 为 (${c},${d})，${rank===2?'两组比例不共线':'两组比例线性相关'}`);
+    document.querySelectorAll('[data-vector-select]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.vectorSelect===graph.selected)));
+    $('u-coordinates').textContent=`(${M.format(a)}, ${M.format(b)})`;$('w-coordinates').textContent=`(${M.format(c)}, ${M.format(d)})`;
+  }
+  function selectVector(name){graph.selected=name;plotVectors();}
+  const boundedCoefficient=value=>Math.round(Math.max(-3,Math.min(3,value))*10)/10||0;
+  function setVector(name,x,y){
+    const values=state.matrix.slice(),index=name==='u'?0:2;
+    values[index]=boundedCoefficient(x);values[index+1]=boundedCoefficient(y);
+    if(values.some((value,i)=>value!==state.matrix[i]))updateMatrix(values);
+  }
+  function announceVector(){
+    const index=graph.selected==='u'?0:2;
+    $('graph-announcement').textContent=`混音 ${graph.selected}：人声系数 ${M.format(state.matrix[index])}，旋律系数 ${M.format(state.matrix[index+1])}。`;
+  }
+  function graphPoint(event){
+    const svg=$('vector-plot'),transform=svg.getScreenCTM();if(!transform)return null;
+    const point=svg.createSVGPoint();point.x=event.clientX;point.y=event.clientY;
+    // The screen transform includes responsive scaling and viewBox letterboxing.
+    return point.matrixTransform(transform.inverse());
+  }
+  function applyDrag(){
+    const drag=graph.drag;if(!drag)return;
+    drag.frame=0;
+    setVector(drag.name,drag.x+(drag.latest.x-drag.start.x)/graph.unit,drag.y-(drag.latest.y-drag.start.y)/graph.unit);
+  }
+  function endDrag(event){
+    const drag=graph.drag;if(!drag||event.pointerId!==drag.id)return;
+    cancelAnimationFrame(drag.frame);
+    if(event.type==='pointerup'){const point=graphPoint(event);if(point){drag.latest=point;applyDrag();}}
+    graph.drag=null;
+    const svg=$('vector-plot');svg.classList.remove('dragging');
+    if(svg.hasPointerCapture(drag.id))svg.releasePointerCapture(drag.id);
+    announceVector();
+  }
+  function nudgeVector(event,name){
+    if(event.altKey||event.ctrlKey||event.metaKey||graph.drag)return;
+    const steps={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowDown:[0,-1],ArrowUp:[0,1]},delta=steps[event.key];if(!delta)return;
+    event.preventDefault();if(graph.selected!==name)selectVector(name);
+    const index=name==='u'?0:2,step=event.shiftKey?.5:.1;
+    setVector(name,state.matrix[index]+delta[0]*step,state.matrix[index+1]+delta[1]*step);announceVector();
   }
   function renderMatrix(){
     const [a,b,c,d]=state.matrix,analysis=M.analyze(state.matrix);
@@ -173,6 +219,7 @@
     stopAudio();state.matrix=values.slice();state.steps=M.elimination(values);state.step=-1;state.done=false;
     document.querySelectorAll('[data-coefficient]').forEach(input=>{const value=values[Number(input.dataset.coefficient)];input.value=value;input.nextElementSibling.value=M.format(value);});
     $('u-formula').textContent=`u = ${M.combination(values[0],values[1])}`;$('w-formula').textContent=`w = ${M.combination(values[2],values[3])}`;
+    $('concept-u').textContent=$('u-formula').textContent;$('concept-w').textContent=$('w-formula').textContent;
     if(state.ready){state.tracks.u=M.mix(state.tracks.v,state.tracks.m,values[0],values[1]);state.tracks.w=M.mix(state.tracks.v,state.tracks.m,values[2],values[3]);delete state.tracks.rv;delete state.tracks.rm;}
     document.querySelectorAll('[data-preset]').forEach(button=>{const target=button.dataset.preset==='invertible'?[1,1,1,2]:[1,1,2,2];const active=values.every((x,i)=>Math.abs(x-target[i])<M.EPS);button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});
     renderMatrix();renderStep();
@@ -180,6 +227,28 @@
   document.querySelectorAll('[data-track]').forEach(button=>button.addEventListener('click',()=>playAudio(button.dataset.track)));
   document.querySelectorAll('[data-coefficient]').forEach(input=>input.addEventListener('input',()=>{const values=state.matrix.slice();values[Number(input.dataset.coefficient)]=Number(input.value);updateMatrix(values);}));
   document.querySelectorAll('[data-preset]').forEach(button=>button.addEventListener('click',()=>updateMatrix(button.dataset.preset==='invertible'?[1,1,1,2]:[1,1,2,2])));
+  document.querySelectorAll('[data-vector-select]').forEach(button=>{
+    button.addEventListener('click',()=>{selectVector(button.dataset.vectorSelect);announceVector();});
+    button.addEventListener('keydown',event=>nudgeVector(event,button.dataset.vectorSelect));
+  });
+  const vectorPlot=$('vector-plot');
+  vectorPlot.addEventListener('keydown',event=>nudgeVector(event,graph.selected));
+  vectorPlot.addEventListener('pointerdown',event=>{
+    if(graph.drag||event.button!==0)return;
+    const target=event.target.closest('[data-vector]'),point=graphPoint(event);if(!target||!point)return;
+    event.preventDefault();const name=target.dataset.vector,index=name==='u'?0:2;
+    // Capture on the persistent SVG, because its plotted children are redrawn on each update.
+    vectorPlot.setPointerCapture(event.pointerId);vectorPlot.focus({preventScroll:true});
+    graph.drag={id:event.pointerId,name,start:point,latest:point,x:state.matrix[index],y:state.matrix[index+1],frame:0};
+    selectVector(name);vectorPlot.classList.add('dragging');
+  });
+  vectorPlot.addEventListener('pointermove',event=>{
+    const drag=graph.drag;if(!drag||event.pointerId!==drag.id)return;
+    const point=graphPoint(event);if(!point)return;
+    event.preventDefault();drag.latest=point;
+    if(!drag.frame)drag.frame=requestAnimationFrame(applyDrag);
+  });
+  ['pointerup','pointercancel','lostpointercapture'].forEach(type=>vectorPlot.addEventListener(type,endDrag));
   $('reset').addEventListener('click',()=>updateMatrix([1,1,1,2]));$('stop-all').addEventListener('click',stopAudio);
   $('volume').addEventListener('input',()=>{$('volume-value').value=`${$('volume').value}%`;if(state.gain&&state.context)state.gain.gain.setTargetAtTime(.25*Number($('volume').value)/100,state.context.currentTime,.03);});
   $('start-elimination').addEventListener('click',()=>{advanceStep('start');$('eliminate').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});});
