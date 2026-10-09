@@ -109,7 +109,6 @@
     const [a,b,c,d]=state.matrix,analysis=M.analyze(state.matrix);
     $('mix-matrix').innerHTML=state.matrix.map(x=>`<span>${M.format(x)}</span>`).join('');
     $('mix-matrix').setAttribute('aria-label',`混音矩阵，第一行 ${a} ${b}，第二行 ${c} ${d}`);
-    $('det-value').textContent=M.format(analysis.det);
     $('matrix-status').textContent=analysis.invertible?'可以唯一恢复':analysis.rank===0?'全部静音，无法恢复':'信息重复，无法恢复全部原声';
     $('matrix-status').classList.toggle('singular',!analysis.invertible);$('matrix-insight').classList.toggle('singular',!analysis.invertible);
     let title,detail;
