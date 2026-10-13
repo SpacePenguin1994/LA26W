@@ -9,3 +9,8 @@ HW 1
 
 HW 1
 : **HW**{: .label .label-red }Released:[Homework #1-sol](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/homework/LA-homework1-solution.pdf)  
+
+
+
+HW 2
+: **HW**{: .label .label-red }Released:[Homework #2-sol](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/homework/LA-homework2-solution.pdf)  
