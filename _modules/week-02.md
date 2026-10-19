@@ -32,6 +32,8 @@ Lec 6
 Lec 7
 : **解线性方程组(II)(Solving Linear Equations (II))**
   :  \[[讲义](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/slides/Lecture-7.pdf)\]
+
+  
 <!--
 Lec 0
 : **课程概览(Overview)**
