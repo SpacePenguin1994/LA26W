@@ -26,3 +26,6 @@ HW 5
 
 HW 6
 : **HW**{: .label .label-red }Released:[Homework #6-sol](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/homework/LA-homework6-solution.pdf)  
+
+HW 7
+: **HW**{: .label .label-red }Released:[Homework #7-sol](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/homework/LA-homework7-solution.pdf)  
