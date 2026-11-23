@@ -41,7 +41,9 @@ Lec 9
 : **最小二乘法和标准正交基（Least Square Approximations and Orthonormal Bases）**
   :  \[[讲义](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/slides/Lecture-9.pdf)\]
 
-
+Lec 10-11
+: **行列式（Determinants）**
+  :  \[[讲义](https://basics.sjtu.edu.cn/~yangqizhe/pdf/la2026w/slides/Lecture-Determinants-formal.pdf)\]
 
 <!--
 Lec 0
